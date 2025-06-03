@@ -1,6 +1,13 @@
+import { WorldMapDemo } from "../components/ui/world-map-demo";
+import { Navbar1 } from "../components/ui/navbar-1";
+
 const About = () => {
   return (
     <div className="bg-white">
+      <Navbar1 />
+      {/* World Map Demo Section */}
+      <WorldMapDemo />
+
       {/* Hero Section */}
       <div className="relative bg-gray-900 text-white">
         <div className="absolute inset-0">

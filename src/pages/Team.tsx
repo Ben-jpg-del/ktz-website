@@ -1,33 +1,40 @@
+import { Navbar1 } from "../components/ui/navbar-1";
+
 const Team = () => {
   const teamMembers = [
     {
-      name: "John Smith",
-      title: "Chief Investment Officer",
-      bio: "20+ years of experience in quantitative trading and portfolio management. Former head of quantitative strategies at a leading investment bank.",
+      name: "Pippin Kantakom",
+      title: "Managing Partner",
+      bio: "Mathematical Economics @ UPenn",
       image: "https://via.placeholder.com/400x400"
     },
     {
-      name: "Sarah Johnson",
-      title: "Head of Research",
-      bio: "PhD in Computer Science with a focus on machine learning. Previously led AI research at a top technology firm.",
+      name: "Albert Tsao",
+      title: "Managing Partner",
+      bio: "Computer Science @ NYU",
       image: "https://via.placeholder.com/400x400"
     },
     {
-      name: "Michael Chen",
-      title: "Chief Technology Officer",
-      bio: "Expert in high-performance computing and algorithmic trading systems. Built trading infrastructure for major financial institutions.",
+      name: "Ben Zhou",
+      title: "Managing Partner",
+      bio: "Applied Math @ UC Berkeley",
       image: "https://via.placeholder.com/400x400"
     },
     {
-      name: "Emily Rodriguez",
-      title: "Head of Risk Management",
-      bio: "15+ years of experience in risk management and portfolio optimization. Former risk manager at a global hedge fund.",
+      name: "Tristan Furlow",
+      title: "Senior Partner",
+      bio: "Business @ USC Marshall",
       image: "https://via.placeholder.com/400x400"
     }
   ];
 
+  // Split members by title
+  const managingPartners = teamMembers.filter(m => m.title === "Managing Partner");
+  const seniorPartners = teamMembers.filter(m => m.title === "Senior Partner");
+
   return (
     <div className="bg-white">
+      <Navbar1 />
       {/* Hero Section */}
       <div className="relative bg-gray-900 text-white">
         <div className="absolute inset-0">
@@ -46,9 +53,29 @@ const Team = () => {
       {/* Team Members Section */}
       <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2">
-            {teamMembers.map((member, index) => (
+          {/* Managing Partners Row */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            {managingPartners.map((member, index) => (
               <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-sm">
+                <div className="aspect-w-1 aspect-h-1">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-64 object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900">{member.name}</h3>
+                  <p className="mt-1 text-blue-600">{member.title}</p>
+                  <p className="mt-4 text-gray-600">{member.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Senior Partner Row */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {seniorPartners.map((member, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-sm md:col-start-2">
                 <div className="aspect-w-1 aspect-h-1">
                   <img
                     src={member.image}

@@ -1,16 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png'; // Import the logo image
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // State to track navbar visibility
+  const [lastScrollY, setLastScrollY] = useState(0); // State to track last scroll position
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) { // Hide navbar when scrolling down past 80px
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) { // Show navbar when scrolling up
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY); // Update last scroll position
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]); // Re-run effect when lastScrollY changes
 
   return (
-    <nav className="bg-gray-900 text-white fixed w-full z-50 shadow-lg">
+    <nav className={`bg-black text-white fixed w-full z-50 shadow-lg transform transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
-              <span className="text-2xl font-bold text-blue-500">KTZ</span>
+              <img src={logo} alt="KTZ Logo" className="h-10" />
             </Link>
           </div>
           
@@ -25,12 +48,6 @@ const Navbar = () => {
               </Link>
               <Link to="/team" className="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                 Team
-              </Link>
-              <Link to="/strategy" className="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                Strategy
-              </Link>
-              <Link to="/insights" className="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                Insights
               </Link>
               <Link to="/contact" className="hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                 Contact
@@ -71,12 +88,6 @@ const Navbar = () => {
             </Link>
             <Link to="/team" className="hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium">
               Team
-            </Link>
-            <Link to="/strategy" className="hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium">
-              Strategy
-            </Link>
-            <Link to="/insights" className="hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium">
-              Insights
             </Link>
             <Link to="/contact" className="hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium">
               Contact
