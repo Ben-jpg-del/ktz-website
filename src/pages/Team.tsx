@@ -1,7 +1,57 @@
-import { Navbar1 } from "../components/ui/navbar-1";
+import { useState } from "react";
+
+interface TeamMember {
+  name: string;
+  title: string;
+  bio: string;
+  image: string;
+}
+
+interface TeamMemberModalProps {
+  member: TeamMember | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const TeamMemberModal = ({ member, isOpen, onClose }: TeamMemberModalProps) => {
+  if (!isOpen || !member) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-lg p-6 max-w-2xl w-full relative">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+        >
+          ✕
+        </button>
+        <div className="space-y-6">
+          <h2 className="text-2xl font-bold">{member.name}</h2>
+
+          <div className="space-y-1">
+            <p className="text-blue-600">{member.title}</p>
+            <p className="text-gray-600">{member.bio}</p>
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-gray-700">email/phone number - here</p>
+            <p className="text-gray-700">linkedin - here</p>
+            <p className="text-gray-700">socials - here</p>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-gray-200">
+            <p className="text-gray-600">"Text here"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Team = () => {
-  const teamMembers = [
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+
+  const teamMembers: TeamMember[] = [
     {
       name: "Pippin Kantakom",
       title: "Managing Partner",
@@ -34,7 +84,6 @@ const Team = () => {
 
   return (
     <div className="bg-white">
-      <Navbar1 />
       {/* Hero Section */}
       <div className="relative bg-gray-900 text-white">
         <div className="absolute inset-0">
@@ -56,7 +105,16 @@ const Team = () => {
           {/* Managing Partners Row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             {managingPartners.map((member, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-sm">
+              <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-sm relative">
+                <button
+                  onClick={() => setSelectedMember(member)}
+                  className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors"
+                  aria-label="More information"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </button>
                 <div className="aspect-w-1 aspect-h-1">
                   <img
                     src={member.image}
@@ -75,7 +133,16 @@ const Team = () => {
           {/* Senior Partner Row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {seniorPartners.map((member, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-sm md:col-start-2">
+              <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-sm md:col-start-2 relative">
+                <button
+                  onClick={() => setSelectedMember(member)}
+                  className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors"
+                  aria-label="More information"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </button>
                 <div className="aspect-w-1 aspect-h-1">
                   <img
                     src={member.image}
@@ -113,6 +180,13 @@ const Team = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      <TeamMemberModal
+        member={selectedMember}
+        isOpen={!!selectedMember}
+        onClose={() => setSelectedMember(null)}
+      />
     </div>
   );
 };

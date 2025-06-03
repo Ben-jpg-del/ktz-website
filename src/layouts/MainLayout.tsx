@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom';
-// Removed import { Navbar1 } from '../components/ui/navbar-1';
+import { Navbar1 } from '../components/ui/navbar-1';
 import logo from '../assets/logo.png';
 
 const MainLayout = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* <Navbar1 /> Removed Navbar1 */}
+      <Navbar1 />
       <main className="">
         <Outlet />
       </main>
