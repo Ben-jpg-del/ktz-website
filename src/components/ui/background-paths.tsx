@@ -53,14 +53,21 @@ function FloatingPaths({ position }: { position: number }) {
 
 export function BackgroundPaths() {
     const navigate = useNavigate();
-    const words = ["KTZ", "Investment Firm"];
+    const words = ["KTZ", "Innovation & Excellence"];
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            navigate('/home');
-        }, 5000); // Changed to 5 seconds total
+        // Check if this is the first visit
+        if (!sessionStorage.getItem('hasVisited')) {
+            const timer = setTimeout(() => {
+                sessionStorage.setItem('hasVisited', 'true');
+                navigate('/home');
+            }, 4000); // Changed from 5000 to 4000 ms
 
-        return () => clearTimeout(timer);
+            return () => clearTimeout(timer);
+        } else {
+            // If not first visit, redirect immediately
+            navigate('/home');
+        }
     }, [navigate]);
 
     return (

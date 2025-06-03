@@ -26,11 +26,24 @@ const TeamMemberModal = ({ member, isOpen, onClose }: TeamMemberModalProps) => {
           ✕
         </button>
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold">{member.name}</h2>
+          {/* Profile Image */}
+          <div className="flex justify-center">
+            <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-200 shadow-lg">
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="text-center">
+            <h2 className="text-2xl font-bold">{member.name}</h2>
+            <p className="text-blue-600 mt-1">{member.title}</p>
+          </div>
 
           <div className="space-y-1">
-            <p className="text-blue-600">{member.title}</p>
-            <p className="text-gray-600">{member.bio}</p>
+            <p className="text-gray-600 text-center">{member.bio}</p>
           </div>
 
           <div className="space-y-2">
@@ -105,16 +118,11 @@ const Team = () => {
           {/* Managing Partners Row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             {managingPartners.map((member, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-sm relative">
-                <button
-                  onClick={() => setSelectedMember(member)}
-                  className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors"
-                  aria-label="More information"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </button>
+              <button
+                key={index}
+                onClick={() => setSelectedMember(member)}
+                className="bg-gray-50 rounded-lg overflow-hidden shadow-sm relative hover:shadow-md transition-shadow text-left w-full cursor-pointer"
+              >
                 <div className="aspect-w-1 aspect-h-1">
                   <img
                     src={member.image}
@@ -127,22 +135,17 @@ const Team = () => {
                   <p className="mt-1 text-blue-600">{member.title}</p>
                   <p className="mt-4 text-gray-600">{member.bio}</p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
           {/* Senior Partner Row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {seniorPartners.map((member, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-sm md:col-start-2 relative">
-                <button
-                  onClick={() => setSelectedMember(member)}
-                  className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors"
-                  aria-label="More information"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </button>
+              <button
+                key={index}
+                onClick={() => setSelectedMember(member)}
+                className="bg-gray-50 rounded-lg overflow-hidden shadow-sm md:col-start-2 relative hover:shadow-md transition-shadow text-left w-full cursor-pointer"
+              >
                 <div className="aspect-w-1 aspect-h-1">
                   <img
                     src={member.image}
@@ -155,7 +158,7 @@ const Team = () => {
                   <p className="mt-1 text-blue-600">{member.title}</p>
                   <p className="mt-4 text-gray-600">{member.bio}</p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>

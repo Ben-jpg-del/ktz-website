@@ -1,10 +1,23 @@
-import { WorldMapDemo } from "../components/ui/world-map-demo";
+import { lazy, Suspense } from 'react';
+
+const WorldMapDemo = lazy(() => import("../components/ui/world-map-demo").then(module => ({
+  default: module.WorldMapDemo
+})));
 
 const About = () => {
   return (
     <div className="bg-white">
       {/* World Map Demo Section */}
-      <WorldMapDemo />
+      <Suspense fallback={
+        <div className="py-40 dark:bg-black bg-white w-full flex items-center justify-center">
+          <div className="animate-pulse flex flex-col items-center">
+            <div className="h-8 w-48 bg-gray-200 rounded mb-4"></div>
+            <div className="h-4 w-64 bg-gray-100 rounded"></div>
+          </div>
+        </div>
+      }>
+        <WorldMapDemo />
+      </Suspense>
 
       {/* Hero Section */}
       <div className="relative bg-gray-900 text-white">
