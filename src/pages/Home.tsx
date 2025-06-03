@@ -1,6 +1,5 @@
 import { DemoOne } from "../components/ui/demo";
 import { FlowingMenu } from "../components/ui/flowing-menu";
-import { Navbar1 } from "../components/ui/navbar-1";
 
 const menuItems = [
   {
@@ -20,10 +19,9 @@ const menuItems = [
   }
 ];
 
-const Home = () => {
+export default function Home() {
   return (
     <div className="bg-black p-0 m-0">
-      <Navbar1 />
       {/* ShapeBlur Section */}
       <section className="w-full h-screen bg-black flex justify-center items-center">
         <DemoOne />
@@ -57,6 +55,4 @@ const Home = () => {
       </section>
     </div>
   );
-};
-
-export default Home; 
+} 

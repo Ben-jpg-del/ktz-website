@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Component } from "./shapeblur"; 
-import { Navbar1 } from "./navbar-1"
 
 const DemoOne = () => {
   const [pixelRatio, setPixelRatio] = useState(1);
@@ -41,12 +40,4 @@ const DemoOne = () => {
   );
 };
 
-const Demo = () => {
-    return (
-        <>
-            <Navbar1/>
-        </>
-    )
-}
-
-export { DemoOne, Demo }; 
+export { DemoOne }; 

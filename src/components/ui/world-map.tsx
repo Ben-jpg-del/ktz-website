@@ -1,8 +1,5 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import DottedMap from "dotted-map";
-// import Image from "next/image"; // Not used in Vite/CRA
-// import { useTheme } from "next-themes"; // Not used in Vite/CRA
 
 interface MapProps {
   dots?: Array<{
@@ -10,21 +7,15 @@ interface MapProps {
     end: { lat: number; lng: number; label?: string };
   }>;
   lineColor?: string;
+  preloadedMap?: string;
 }
 
 export function WorldMap({
   dots = [],
   lineColor = "#0ea5e9",
+  preloadedMap,
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const map = new DottedMap({ height: 100, grid: "diagonal" });
-
-  const svgMap = map.getSVG({
-    radius: 0.22,
-    color: "#00000040",
-    shape: "circle",
-    backgroundColor: "white",
-  });
 
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);
@@ -41,10 +32,14 @@ export function WorldMap({
     return `M ${start.x} ${start.y} Q ${midX} ${midY} ${end.x} ${end.y}`;
   };
 
+  if (!preloadedMap) {
+    return <div className="w-full aspect-[2/1] bg-gray-100 animate-pulse rounded-lg"></div>;
+  }
+
   return (
-    <div className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg  relative font-sans">
+    <div className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg relative font-sans">
       <img
-        src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
+        src={`data:image/svg+xml;utf8,${encodeURIComponent(preloadedMap)}`}
         className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"
         alt="world map"
         height={495}

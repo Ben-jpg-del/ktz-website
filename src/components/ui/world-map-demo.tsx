@@ -1,7 +1,10 @@
 import { WorldMap } from "./world-map";
 import { motion } from "framer-motion";
+import { useMap } from "../../context/MapContext";
 
 export function WorldMapDemo() {
+  const { preloadedMap } = useMap();
+  
   // City coordinates
   const cities = [
     { lat: 39.9167, lng: 116.3833 }, // Beijing
@@ -21,7 +24,7 @@ export function WorldMapDemo() {
   }
 
   return (
-    <div className=" py-40 dark:bg-black bg-white w-full">
+    <div className="py-40 dark:bg-black bg-white w-full">
       <div className="max-w-7xl mx-auto text-center">
         <p className="font-bold text-xl md:text-4xl dark:text-white text-black">
           Remote{" "}
@@ -48,6 +51,7 @@ export function WorldMapDemo() {
       <WorldMap
         dots={dots}
         lineColor="#0ea5e9"
+        preloadedMap={preloadedMap || undefined}
       />
     </div>
   );

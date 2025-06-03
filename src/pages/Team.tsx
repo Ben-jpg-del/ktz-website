@@ -1,7 +1,70 @@
-import { Navbar1 } from "../components/ui/navbar-1";
+import { useState } from "react";
+
+interface TeamMember {
+  name: string;
+  title: string;
+  bio: string;
+  image: string;
+}
+
+interface TeamMemberModalProps {
+  member: TeamMember | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const TeamMemberModal = ({ member, isOpen, onClose }: TeamMemberModalProps) => {
+  if (!isOpen || !member) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-lg p-6 max-w-2xl w-full relative">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+        >
+          ✕
+        </button>
+        <div className="space-y-6">
+          {/* Profile Image */}
+          <div className="flex justify-center">
+            <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-200 shadow-lg">
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="text-center">
+            <h2 className="text-2xl font-bold">{member.name}</h2>
+            <p className="text-blue-600 mt-1">{member.title}</p>
+          </div>
+
+          <div className="space-y-1">
+            <p className="text-gray-600 text-center">{member.bio}</p>
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-gray-700">email/phone number - here</p>
+            <p className="text-gray-700">linkedin - here</p>
+            <p className="text-gray-700">socials - here</p>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-gray-200">
+            <p className="text-gray-600">"Text here"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Team = () => {
-  const teamMembers = [
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+
+  const teamMembers: TeamMember[] = [
     {
       name: "Pippin Kantakom",
       title: "Managing Partner",
@@ -34,7 +97,6 @@ const Team = () => {
 
   return (
     <div className="bg-white">
-      <Navbar1 />
       {/* Hero Section */}
       <div className="relative bg-gray-900 text-white">
         <div className="absolute inset-0">
@@ -56,7 +118,11 @@ const Team = () => {
           {/* Managing Partners Row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             {managingPartners.map((member, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-sm">
+              <button
+                key={index}
+                onClick={() => setSelectedMember(member)}
+                className="bg-gray-50 rounded-lg overflow-hidden shadow-sm relative hover:shadow-md transition-all duration-300 hover:ring-2 hover:ring-blue-500 text-left w-full cursor-pointer"
+              >
                 <div className="aspect-w-1 aspect-h-1">
                   <img
                     src={member.image}
@@ -69,13 +135,17 @@ const Team = () => {
                   <p className="mt-1 text-blue-600">{member.title}</p>
                   <p className="mt-4 text-gray-600">{member.bio}</p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
           {/* Senior Partner Row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {seniorPartners.map((member, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-sm md:col-start-2">
+              <button
+                key={index}
+                onClick={() => setSelectedMember(member)}
+                className="bg-gray-50 rounded-lg overflow-hidden shadow-sm md:col-start-2 relative hover:shadow-md transition-all duration-300 hover:ring-2 hover:ring-blue-500 text-left w-full cursor-pointer"
+              >
                 <div className="aspect-w-1 aspect-h-1">
                   <img
                     src={member.image}
@@ -88,7 +158,7 @@ const Team = () => {
                   <p className="mt-1 text-blue-600">{member.title}</p>
                   <p className="mt-4 text-gray-600">{member.bio}</p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -113,6 +183,13 @@ const Team = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      <TeamMemberModal
+        member={selectedMember}
+        isOpen={!!selectedMember}
+        onClose={() => setSelectedMember(null)}
+      />
     </div>
   );
 };
