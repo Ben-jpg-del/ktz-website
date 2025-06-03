@@ -18,6 +18,7 @@ const Navbar1 = () => {
     { name: "About Us", href: "/about" },
     { name: "Team", href: "/team" },
     { name: "Portfolio", href: "/portfolio" },
+    { name: "Investor Login", href: "/login" },
   ];
 
   return (
@@ -59,8 +60,8 @@ const Navbar1 = () => {
             ))}
           </nav>
 
-          {/* Desktop CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Desktop CTA Button */}
+          <div className="hidden md:flex items-center">
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -72,19 +73,6 @@ const Navbar1 = () => {
                 className={`inline-flex items-center justify-center px-5 py-2 ${isHomePage ? 'text-black bg-white hover:bg-gray-200' : 'text-white bg-black hover:bg-gray-800'} rounded-full transition-colors`}
               >
                 Inquire
-              </Link>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <Link
-                to="/login"
-                className={`inline-flex items-center justify-center px-5 py-2 ${isHomePage ? 'text-white border-2 border-white hover:bg-gray-900' : 'text-black border-2 border-black hover:bg-gray-100'} rounded-full transition-colors`}
-              >
-                Investor Login
               </Link>
             </motion.div>
           </div>
@@ -125,13 +113,6 @@ const Navbar1 = () => {
                       {item.name}
                     </Link>
                   ))}
-                  <Link
-                    to="/login"
-                    className={`block px-3 py-2 rounded-md text-base font-medium ${isHomePage ? 'text-white hover:bg-gray-900' : 'text-black hover:bg-gray-100'} transition-colors`}
-                    onClick={toggleMenu}
-                  >
-                    Investor Login
-                  </Link>
                 </div>
               </motion.div>
             )}

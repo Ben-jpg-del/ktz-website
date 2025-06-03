@@ -121,7 +121,7 @@ const Team = () => {
               <button
                 key={index}
                 onClick={() => setSelectedMember(member)}
-                className="bg-gray-50 rounded-lg overflow-hidden shadow-sm relative hover:shadow-md transition-shadow text-left w-full cursor-pointer"
+                className="bg-gray-50 rounded-lg overflow-hidden shadow-sm relative hover:shadow-md transition-all duration-300 hover:ring-2 hover:ring-blue-500 text-left w-full cursor-pointer"
               >
                 <div className="aspect-w-1 aspect-h-1">
                   <img
@@ -144,7 +144,7 @@ const Team = () => {
               <button
                 key={index}
                 onClick={() => setSelectedMember(member)}
-                className="bg-gray-50 rounded-lg overflow-hidden shadow-sm md:col-start-2 relative hover:shadow-md transition-shadow text-left w-full cursor-pointer"
+                className="bg-gray-50 rounded-lg overflow-hidden shadow-sm md:col-start-2 relative hover:shadow-md transition-all duration-300 hover:ring-2 hover:ring-blue-500 text-left w-full cursor-pointer"
               >
                 <div className="aspect-w-1 aspect-h-1">
                   <img
