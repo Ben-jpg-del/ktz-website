@@ -15,22 +15,23 @@ const DemoOne = () => {
   // This component only contains the content (text and shapeblur)
   return (
     <div className="relative w-full h-full flex justify-center items-center cursor-pointer">
-      <div className="absolute inset-0 flex justify-center items-center z-0">
+      <div className="absolute inset-0 flex justify-center items-center z-0 px-4">
         <h1 
           className={`
-            text-4xl sm:text-5xl font-bold select-none whitespace-nowrap
-            transition-colors duration-200 ease-in-out
-            ${isHovered ? 'text-gray-100' : 'text-gray-400'} 
+            text-3xl sm:text-4xl md:text-5xl font-bold select-none
+            transition-colors duration-200 ease-in-out text-center
+            ${isHovered ? 'text-gray-100' : 'text-gray-400'}
+            whitespace-normal sm:whitespace-nowrap
           `}
         >
-          Redefining Markets Through Math.
+          Redefining Markets<br className="sm:hidden" /> Through Math.
         </h1>
       </div>
       <div className="absolute inset-0 z-10 pointer-events-none"> 
         <Component
           variation={0} 
           pixelRatioProp={pixelRatio}
-          shapeSize={1.0}     
+          shapeSize={0.85}     
           roundness={0.50}    
           borderSize={0.0050}  
           circleEdge={1.0}

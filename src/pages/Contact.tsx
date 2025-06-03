@@ -1,6 +1,9 @@
+import { Navbar1 } from "../components/ui/navbar-1";
+
 const Contact = () => {
   return (
     <div className="bg-white">
+      <Navbar1 />
       {/* Hero Section */}
       <div className="relative bg-gray-900 text-white">
         <div className="absolute inset-0">

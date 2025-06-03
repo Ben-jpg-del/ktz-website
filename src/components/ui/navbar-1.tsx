@@ -3,13 +3,17 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 
 const Navbar1 = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen)
+
+  // Determine if we should use inverse colors based on the current route
+  const useInverseColors = location.pathname === '/about' || location.pathname === '/team' || location.pathname === '/contact';
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -19,7 +23,7 @@ const Navbar1 = () => {
 
   return (
     <div className="flex justify-center w-full pt-0 px-4">
-      <div className="flex items-center justify-between px-6 py-3 bg-black rounded-full shadow-lg w-full max-w-3xl relative z-10">
+      <div className={`flex items-center justify-between px-6 py-3 ${useInverseColors ? 'bg-white' : 'bg-black'} rounded-full shadow-lg w-full max-w-3xl relative z-10`}>
         <div className="flex items-center">
           <motion.div
             className="w-8 h-8 mr-6"
@@ -34,22 +38,25 @@ const Navbar1 = () => {
           </motion.div>
         </div>
         
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <motion.div
-                key={item.name}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                whileHover={{ scale: 1.05 }}
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-8">
+          {navItems.map((item) => (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <Link 
+                to={item.href} 
+                className={`text-sm ${useInverseColors ? 'text-black hover:text-gray-700' : 'text-white hover:text-gray-300'} transition-colors font-medium`}
               >
-                <Link to={item.href} className="text-sm text-white hover:text-gray-300 transition-colors font-medium">
-                  {item.name}
-                </Link>
-              </motion.div>
-            ))}
-          </nav>
+                {item.name}
+              </Link>
+            </motion.div>
+          ))}
+        </nav>
 
         {/* Desktop CTA Button */}
         <motion.div
@@ -61,15 +68,19 @@ const Navbar1 = () => {
         >
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center px-5 py-2 text-black bg-white rounded-full hover:bg-gray-200 transition-colors"
+            className={`inline-flex items-center justify-center px-5 py-2 ${useInverseColors ? 'text-white bg-black hover:bg-gray-800' : 'text-black bg-white hover:bg-gray-200'} rounded-full transition-colors`}
           >
             Inquire
           </Link>
         </motion.div>
 
         {/* Mobile Menu Button */}
-        <motion.button className="md:hidden flex items-center" onClick={toggleMenu} whileTap={{ scale: 0.9 }}>
-          <Menu className="h-6 w-6 text-white" />
+        <motion.button 
+          className="md:hidden flex items-center" 
+          onClick={toggleMenu} 
+          whileTap={{ scale: 0.9 }}
+        >
+          <Menu className={`h-6 w-6 ${useInverseColors ? 'text-black' : 'text-white'}`} />
         </motion.button>
       </div>
 
@@ -77,7 +88,7 @@ const Navbar1 = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 bg-black z-50 pt-24 px-6 md:hidden"
+            className={`fixed inset-0 ${useInverseColors ? 'bg-white' : 'bg-black'} z-50 pt-24 px-6 md:hidden`}
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
@@ -91,7 +102,7 @@ const Navbar1 = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <X className="h-6 w-6 text-white" />
+              <X className={`h-6 w-6 ${useInverseColors ? 'text-black' : 'text-white'}`} />
             </motion.button>
             <div className="flex flex-col space-y-6">
               {navItems.map((item, i) => (
@@ -102,7 +113,11 @@ const Navbar1 = () => {
                   transition={{ delay: i * 0.1 + 0.1 }}
                   exit={{ opacity: 0, x: 20 }}
                 >
-                  <Link to={item.href} className="text-base text-white font-medium" onClick={toggleMenu}>
+                  <Link 
+                    to={item.href} 
+                    className={`text-base ${useInverseColors ? 'text-black' : 'text-white'} font-medium`} 
+                    onClick={toggleMenu}
+                  >
                     {item.name}
                   </Link>
                 </motion.div>
@@ -117,7 +132,7 @@ const Navbar1 = () => {
               >
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center w-full px-5 py-3 text-black bg-white rounded-full hover:bg-gray-200 transition-colors "
+                  className={`inline-flex items-center justify-center w-full px-5 py-3 ${useInverseColors ? 'text-white bg-black hover:bg-gray-800' : 'text-black bg-white hover:bg-gray-200'} rounded-full transition-colors`}
                   onClick={toggleMenu}
                 >
                   Inquire
@@ -130,6 +145,5 @@ const Navbar1 = () => {
     </div>
   )
 }
-
 
 export { Navbar1 } 
