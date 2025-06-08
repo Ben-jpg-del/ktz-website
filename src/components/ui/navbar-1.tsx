@@ -11,7 +11,7 @@ const Navbar1 = () => {
   const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen)
-  const isHomePage = location.pathname === "/" || location.pathname === "/home";
+  const isDarkMode = location.pathname === "/" || location.pathname === "/home" || location.pathname === "/login";
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -22,7 +22,7 @@ const Navbar1 = () => {
   ];
 
   return (
-    <div className={`w-full ${isHomePage ? 'bg-black' : 'bg-white'}`}>
+    <div className={`w-full ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between py-3 relative z-10">
           <div className="flex items-center">
@@ -51,10 +51,10 @@ const Navbar1 = () => {
               >
                 <Link 
                   to={item.href} 
-                  className={`text-sm ${isHomePage ? 'text-white hover:text-gray-300' : 'text-black hover:text-gray-700'} transition-colors font-medium relative group`}
+                  className={`text-sm ${isDarkMode ? 'text-white hover:text-gray-300' : 'text-black hover:text-gray-700'} transition-colors font-medium relative group`}
                 >
                   {item.name}
-                  <span className={`absolute bottom-0 left-0 w-0 h-0.5 ${isHomePage ? 'bg-white' : 'bg-blue-600'} transition-all duration-300 group-hover:w-full`}></span>
+                  <span className={`absolute bottom-0 left-0 w-0 h-0.5 ${isDarkMode ? 'bg-white' : 'bg-blue-600'} transition-all duration-300 group-hover:w-full`}></span>
                 </Link>
               </motion.div>
             ))}
@@ -70,7 +70,7 @@ const Navbar1 = () => {
             >
               <Link
                 to="/contact"
-                className={`inline-flex items-center justify-center px-5 py-2 ${isHomePage ? 'text-black bg-white hover:bg-gray-200' : 'text-white bg-black hover:bg-gray-800'} rounded-full transition-colors`}
+                className={`inline-flex items-center justify-center px-5 py-2 ${isDarkMode ? 'text-black bg-white hover:bg-gray-200' : 'text-white bg-black hover:bg-gray-800'} rounded-full transition-colors`}
               >
                 Inquire
               </Link>
@@ -81,7 +81,7 @@ const Navbar1 = () => {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className={`inline-flex items-center justify-center p-2 rounded-md ${isHomePage ? 'text-white hover:bg-gray-900' : 'text-black hover:bg-gray-100'} focus:outline-none`}
+              className={`inline-flex items-center justify-center p-2 rounded-md ${isDarkMode ? 'text-white hover:bg-gray-900' : 'text-black hover:bg-gray-100'} focus:outline-none`}
             >
               <span className="sr-only">Open main menu</span>
               {!isOpen ? (
@@ -100,14 +100,14 @@ const Navbar1 = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.2 }}
-                className={`absolute top-full left-0 right-0 mt-2 ${isHomePage ? 'bg-black' : 'bg-white'} shadow-lg overflow-hidden md:hidden`}
+                className={`absolute top-full left-0 right-0 mt-2 ${isDarkMode ? 'bg-black' : 'bg-white'} shadow-lg overflow-hidden md:hidden`}
               >
                 <div className="px-2 pt-2 pb-3 space-y-1">
                   {navItems.map((item) => (
                     <Link
                       key={item.name}
                       to={item.href}
-                      className={`block px-3 py-2 rounded-md text-base font-medium ${isHomePage ? 'text-white hover:bg-gray-900' : 'text-black hover:bg-gray-100'} transition-colors`}
+                      className={`block px-3 py-2 rounded-md text-base font-medium ${isDarkMode ? 'text-white hover:bg-gray-900' : 'text-black hover:bg-gray-100'} transition-colors`}
                       onClick={toggleMenu}
                     >
                       {item.name}

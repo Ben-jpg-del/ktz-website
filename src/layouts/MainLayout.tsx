@@ -14,21 +14,23 @@ const MainLayout = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <img src={logo} alt="KTZ Logo" className="h-10 mb-4" />
-              <p className="text-gray-400">Unlocking Alpha Through Data-Driven Innovation</p>
+              <p className="text-gray-400">Deepseek to OpenAI, bridging the gap of American and Asian AI infrastructure.</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
-              <p className="text-gray-400">Email: info@ktz.com</p>
-              <p className="text-gray-400">Phone: (555) 123-4567</p>
+              <p className="text-gray-400">Email: pkntkm@sas.upenn.edu</p>
+              <p className="text-gray-400">Phone: +1 (978) 494-7359</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <a 
+                  href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A107173680&keywords=ktz&origin=RICH_QUERY_SUGGESTION&position=0&searchId=c066e120-96b0-4a6a-8640-e643669eb954&sid=!MK&spellCorrectionEnabled=false" 
+                  className="text-gray-400 hover:text-white"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   LinkedIn
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white">
-                  Twitter
                 </a>
               </div>
             </div>

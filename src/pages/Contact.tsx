@@ -10,7 +10,7 @@ const Contact = () => {
         </div>
         <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-            Contact Us
+          Contact Us
           </h1>
           <p className="mt-6 text-xl max-w-3xl">
             Get in touch with our team to learn more about our investment strategies and opportunities.
@@ -96,15 +96,8 @@ const Contact = () => {
                 <div>
                   <h3 className="text-lg font-medium text-gray-900">Contact Details</h3>
                   <p className="mt-2 text-gray-600">
-                    Email: info@ktz.com<br />
-                    Phone: +1 (212) 555-0123
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900">Business Hours</h3>
-                  <p className="mt-2 text-gray-600">
-                    Monday - Friday: 9:00 AM - 6:00 PM EST<br />
-                    Saturday - Sunday: Closed
+                    Email: pkntkm@sas.upenn.edu<br />
+                    Phone: +1 (978) 494-7359
                   </p>
                 </div>
               </div>

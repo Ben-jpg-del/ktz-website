@@ -46,24 +46,56 @@ const About = () => {
         </div>
       </div>
 
-      {/* Values Section */}
+      {/* Investment Niche Section */}
       <div className="bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Our Investment Niche</h2>
+            <p className="mt-4 max-w-3xl text-xl text-gray-600 lg:mx-auto">
+              We focus on small-cap companies based in Asia with a specialization in AI compute and connectivity infrastructure, including:
+            </p>
+            <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+              <div className="p-6 bg-white rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Semiconductors</h3>
+                <p className="text-gray-600">
+                  Cutting-edge chip manufacturers and designers powering the next generation of AI computing.
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Network Technology</h3>
+                <p className="text-gray-600">
+                  Advanced cellular and connectivity solutions enabling seamless AI infrastructure deployment.
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Future Infrastructure</h3>
+                <p className="text-gray-600">
+                  Companies developing critical components and technologies for the future of AI infrastructure.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Values Section */}
+      <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Our Values</h2>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="p-6 bg-white rounded-lg shadow-sm">
+            <div className="p-6 bg-gray-50 rounded-lg shadow-sm">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Innovation</h3>
               <p className="text-gray-600">
                 We continuously push the boundaries of quantitative finance, leveraging cutting-edge technology and research to identify new opportunities.
               </p>
             </div>
-            <div className="p-6 bg-white rounded-lg shadow-sm">
+            <div className="p-6 bg-gray-50 rounded-lg shadow-sm">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Transparency</h3>
               <p className="text-gray-600">
                 We believe in clear communication and full disclosure, ensuring our clients understand our strategies and performance.
               </p>
             </div>
-            <div className="p-6 bg-white rounded-lg shadow-sm">
+            <div className="p-6 bg-gray-50 rounded-lg shadow-sm">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Excellence</h3>
               <p className="text-gray-600">
                 We maintain the highest standards in everything we do, from research and development to client service and risk management.
@@ -74,7 +106,7 @@ const About = () => {
       </div>
 
       {/* History Section */}
-      <div className="py-16 bg-white">
+      <div className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">Our Journey</h2>
