@@ -4,18 +4,18 @@ import { FlowingMenu } from "../components/ui/flowing-menu";
 const menuItems = [
   {
     link: '#hero',
-    text: 'Unlocking Alpha Through Data-Driven Innovation',
+    text: 'Deepseek to OpenAI, bridging the gap of American and Asian AI infrastructure',
     image: 'https://picsum.photos/seed/hero/600/400'
   },
   {
     link: '#stats',
-    text: 'Our Impact',
+    text: 'Advisors and managers from Ivy League & Wall Street students and faculty',
     image: 'https://picsum.photos/seed/stats/600/400'
   },
   {
     link: '#approach',
-    text: 'Our Scientific Approach',
-    image: 'https://picsum.photos/seed/approach/600/400'
+    text: 'Elite STEM talent from top Asian universities',
+    image: 'https://images.unsplash.com/photo-1610842590655-b0e6b1874f8b'  // Tsinghua University
   }
 ];
 
