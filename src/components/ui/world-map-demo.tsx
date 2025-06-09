@@ -24,12 +24,12 @@ export function WorldMapDemo() {
   }
 
   return (
-    <div className="py-40 dark:bg-black bg-white w-full">
+    <div className="pt-16 pb-40 dark:bg-black bg-white w-full">
       <div className="max-w-7xl mx-auto text-center">
         <p className="font-bold text-xl md:text-4xl dark:text-white text-black">
-          Remote{" "}
+          KTZ{" "}
           <span className="text-neutral-400">
-            {"Connectivity".split("").map((word, idx) => (
+            {"Investments".split("").map((word, idx) => (
               <motion.span
                 key={idx}
                 className="inline-block"
@@ -43,9 +43,7 @@ export function WorldMapDemo() {
           </span>
         </p>
         <p className="text-sm md:text-lg text-neutral-500 max-w-2xl mx-auto py-4">
-          Break free from traditional boundaries. Work from anywhere, at the
-          comfort of your own studio apartment. Perfect for Nomads and
-          Travellers.
+          Pioneering the future of quantitative investing through innovation, transparency, and excellence.
         </p>
       </div>
       <WorldMap
