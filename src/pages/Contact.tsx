@@ -1,23 +1,37 @@
+import sky from '../assets/sky.png';
+
 const Contact = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <div className="relative bg-gray-900 text-white">
+      <div className="relative text-white">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-gray-900 mix-blend-multiply"></div>
+          <img
+            src={sky}
+            alt="Sky Background"
+            className="w-full h-full object-cover object-center"
+            style={{ zIndex: 0 }}
+          />
+          <div className="absolute inset-0 bg-black/60" style={{ zIndex: 1 }}></div>
         </div>
-        <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-          Contact Us
+        <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 z-10">
+          <h1
+            className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl transition-transform duration-300 hover:scale-105 cursor-pointer"
+            style={{ transformOrigin: '20% center' }}
+            onClick={() => {
+              document.getElementById('contact-form-section')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            Contact Us
           </h1>
-          <p className="mt-6 text-xl max-w-3xl">
+          <p className="mt-6 text-xl max-w-3xl transition-transform duration-300 hover:scale-105 cursor-pointer">
             Get in touch with our team to learn more about our investment strategies and opportunities.
           </p>
         </div>
       </div>
 
       {/* Contact Form and Info Section */}
-      <div className="py-16 bg-white">
+      <div id="contact-form-section" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
             {/* Contact Form */}

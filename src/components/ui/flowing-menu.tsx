@@ -68,7 +68,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
       <React.Fragment key={idx}>
         <span className="
           text-neutral-900 dark:text-white
-          uppercase font-normal text-[4vh] leading-[1.2] p-[1vh_1vw_0] whitespace-nowrap"
+          font-normal text-[4vh] leading-[1.2] p-[1vh_1vw_0] whitespace-nowrap"
         >
           {text}
         </span>
@@ -92,7 +92,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
       <a
         className="
           flex items-center justify-center h-full relative cursor-pointer
-          uppercase no-underline font-semibold
+          no-underline font-semibold
           text-white dark:text-neutral-900
           text-[4vh]
           hover:text-neutral-900 dark:hover:text-white

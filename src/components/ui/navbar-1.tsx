@@ -11,7 +11,7 @@ const Navbar1 = () => {
   const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen)
-  const isDarkMode = location.pathname === "/" || location.pathname === "/home" || location.pathname === "/login";
+  const isDarkMode = location.pathname === "/" || location.pathname === "/home" || location.pathname === "/login" || location.pathname === "/team" || location.pathname === "/portfolio";
 
   const navItems = [
     { name: "Home", href: "/" },
